@@ -8,18 +8,18 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 
 export class ToolbarComponent implements OnInit {
+
   homeSelectedClass: boolean = false;
   searchSelectedClass: boolean = false;
   messageSelectedClass: boolean = false;
   scheduleSelectedClass: boolean = false;
   configSelectedClass: boolean = false;
+  myUserId: string = '';
   constructor(
     public navCtrl: NavController,
     private route: ActivatedRoute,
     public alertController: AlertController
     ) {
-      
-      
       this.homeSelectedClass = true;
       this.searchSelectedClass = false;
       this.messageSelectedClass = false;
@@ -28,13 +28,14 @@ export class ToolbarComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log("URL"+this.route.pathFromRoot);
-    
     this.homeSelectedClass = true;
     this.searchSelectedClass = false;
     this.messageSelectedClass = false;
     this.scheduleSelectedClass = false;
     this.configSelectedClass = false;
+  }
+  setUserId(id){
+    this.myUserId = id;
   }
   async timeline() {
     this.homeSelectedClass = true;
@@ -42,7 +43,7 @@ export class ToolbarComponent implements OnInit {
     this.messageSelectedClass = false;
     this.scheduleSelectedClass = false;
     this.configSelectedClass = false;
-    this.navCtrl.navigateRoot('home');
+    this.navCtrl.navigateRoot('home/'+this.myUserId);
   }
   async search() {
     this.homeSelectedClass = false;
@@ -50,7 +51,7 @@ export class ToolbarComponent implements OnInit {
     this.messageSelectedClass = false;
     this.scheduleSelectedClass = false;
     this.configSelectedClass = false;
-    this.navCtrl.navigateRoot('search');
+    this.navCtrl.navigateRoot('search/'+this.myUserId);
   }
   async message() {
     this.homeSelectedClass = false;
@@ -58,7 +59,7 @@ export class ToolbarComponent implements OnInit {
     this.messageSelectedClass = true;
     this.scheduleSelectedClass = false;
     this.configSelectedClass = false;
-    this.navCtrl.navigateRoot('message');
+    this.navCtrl.navigateRoot('message/'+this.myUserId);
   }
   async schedule() {
     this.homeSelectedClass = false;
@@ -66,7 +67,7 @@ export class ToolbarComponent implements OnInit {
     this.messageSelectedClass = false;
     this.scheduleSelectedClass = true;
     this.configSelectedClass = false;
-    this.navCtrl.navigateRoot('schedule');
+    this.navCtrl.navigateRoot('schedule/'+this.myUserId);
   }
   async config() {
     this.homeSelectedClass = false;
@@ -74,6 +75,6 @@ export class ToolbarComponent implements OnInit {
     this.messageSelectedClass = false;
     this.scheduleSelectedClass = false;
     this.configSelectedClass = true;
-    this.navCtrl.navigateRoot('config');
+    this.navCtrl.navigateRoot('config/'+this.myUserId);
   }
 }

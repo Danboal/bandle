@@ -85,7 +85,7 @@
   $font-family-base: "mainfont";
 }
 ion-content {
-  --offset-bottom: -57px !important;
+  --offset-bottom: calc(100vh - 57px) !important;
 }
 ion-title {
   text-align: center;
@@ -95,7 +95,10 @@ ion-title {
   --ion-text-color:#444038;
 }
 .alert-button.sc-ion-alert-md {
-  color:#444038;
+  background:#444038 !important;
+}
+.sc-ion-alert-ios-h{
+  --background:#444038 !important;
 }
  /** ローディングダイアログ **/
 .loading-class.loading-wrapper{

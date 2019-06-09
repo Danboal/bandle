@@ -18,6 +18,7 @@ export class TalkRoomPage implements OnInit {
   constructor(public navCtrl: NavController, public route: ActivatedRoute) { }
 
   ngOnInit() {
+    document.getElementById("ion-footer").style.display = 'contents';
   }
   sendChatMessage(){
   }

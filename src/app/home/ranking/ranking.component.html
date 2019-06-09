@@ -1,4 +1,42 @@
 <ion-list>
+    <div (click)="inquiry()">
+      <ion-item>
+          <ion-grid no-padding>
+              <ion-row>
+                  <ion-col>
+                    <ion-text style="font-size: 20px;">1</ion-text>
+                  </ion-col>
+                  <ion-col col-3 offset-3>
+                      <ion-text>動画タイトル</ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-img  src="http://img.youtube.com/vi/dn17-EfMNY8/default.jpg"></ion-img>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                  <ion-col>
+                      <ion-avotor><img src="../../assets/icon/favicon.png" class="userAvotorClass"></ion-avotor><br>
+                      <span>　投稿者名</span>
+                  </ion-col>
+                  <ion-col>
+                      <ion-icon name="logo-youtube"></ion-icon>
+                      <span>1,000,000</span>
+                    </ion-col>
+                    <ion-col>
+                        <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
+                        <span>1,000,000</span>
+                      </ion-col>
+                      <ion-col>
+                          <ion-icon name="heart"></ion-icon>
+                          <span>1,000,000</span>
+                        </ion-col>
+                </ion-row>
+            </ion-grid>
+      </ion-item>
+        
+    </div>
   <div class="listItemClass" (click)="inquiry()">
   <ion-item class="rankingItemClass">
       <ion-item item-left class="itemLeftClass">

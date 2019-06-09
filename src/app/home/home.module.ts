@@ -12,7 +12,7 @@ import { ContributionModule } from './contribution/contribution.module';
 import { RankingModule } from './ranking/ranking.module';
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: HomePage
   }
 ];

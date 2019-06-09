@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
       <ion-back-button></ion-back-button>
   </ion-toolbar>
 </ion-header>
@@ -25,7 +25,7 @@
                 </ion-row>
                 </ion-grid>
         </ion-item>
-        <ion-item lines="inset" style="--border-color:#ffffff;">
+        <ion-item lines="none" style="--border-color:#ffffff;">
             <ion-grid>
                 <ion-row>
                     <ion-col>
@@ -41,15 +41,120 @@
                     </ion-row>
                     </ion-grid>
         </ion-item>
-        <ion-item>
-          プロフィール
-         </ion-item>
-         <ion-item>
-           担当パート
-          </ion-item>
-          <ion-item item-end>
-            好きなジャンル
-            </ion-item>
+        <ion-tab-bar slot="top" color="dark" #tabmenu>
+            <ion-tab-button color="dark" [class.disableClass]="!profileSelectedClass" [class.selectedClass]="profileSelectedClass" (click)="profile()">
+                <ion-label >プロフィール</ion-label>
+            </ion-tab-button>
+            <ion-tab-button color="dark" [class.disableClass]="!bandContributeSelectedClass"[class.selectedClass]="bandContributeSelectedClass" (click)="bandContribute()">
+                <ion-label >投稿</ion-label>
+            </ion-tab-button>
+            <ion-tab-button color="dark" [class.disableClass]="!memberSelectedClass" [class.selectedClass]="memberSelectedClass" (click)="member()">
+                <ion-label >メンバー</ion-label>
+            </ion-tab-button>
+            <ion-tab-button color="dark" [class.disableClass]="!scheduleSelectedClass" [class.selectedClass]="scheduleSelectedClass" (click)="schedule()">
+                <ion-label >予定</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+        <ion-slides (ionSlideWillChange)="onSlideChangeStart()" #Slids>
+            <ion-slide >
+                    <ion-item>
+                            プロフィール
+                    </ion-item>
+            </ion-slide>
+            <ion-slide >
+                    <ion-list>
+                       <ion-card color="dark" (click)="inquiry()">
+                           <ion-item color="dark" item-start >
+                                   <ion-avatar item-start>
+                                           <img src="../../assets/icon/favicon.png">
+                                   </ion-avatar>
+                                   <div>
+                                           <p style="padding-left: 10px;     margin: 0 0 0 0;">Account Name</p>
+                                           <p style="padding-left: 10px;     margin: 0 0 0 0;">@account_id</p>  
+                                   </div>
+                                   
+                                   <ion-note item-end style="margin: 0 0 0 auto;">00:00 am</ion-note>
+                           </ion-item>
+                           <ion-item color="dark" >
+                           <div id=”player” style="margin: 0 auto 0 auto;">
+                                           <iframe src="https://www.youtube.com/embed/dn17-EfMNY8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                           </div>
+                           </ion-item>
+                           <ion-item color="dark" style="left:20px">
+                                   <div style="margin: 0 auto 0 0;">
+                                           <p >本文(１行)<span style="color:rgb(99, 99, 99);">...</span></p>
+                                   </div>
+                           </ion-item>
+                           <ion-item color="dark" style="left:20px;  display:flex; justify-content:space-between; flex-direction: row;">
+                                                   <div>
+                                                     <ion-icon name="chatboxes"></ion-icon>
+                                                   </div>
+                                                   <div>
+                                                     <ion-icon name="heart"></ion-icon>  
+                                                   </div>
+                           </ion-item>
+                     </ion-card>
+                    </ion-list>
+            </ion-slide>
+            <ion-slide >
+                    <ion-list style="width: calc(100vw);  margin-top: 10px;">
+                       <ion-item color="dark" item-start >
+                           <ion-avatar item-start>
+                                   <img src="../../assets/icon/favicon.png">
+                           </ion-avatar>
+                           <div>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">Band Name</p>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">@band_id</p>  
+                           </div>
+                           
+                           <ion-note item-end style="margin: 0 0 0 auto;">ボーカル</ion-note>
+                       </ion-item>
+                       <ion-item color="dark" item-start >
+                           <ion-avatar item-start>
+                                   <img src="../../assets/icon/favicon.png">
+                           </ion-avatar>
+                           <div>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">Band Name</p>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">@band_id</p>  
+                           </div>
+                           
+                           <ion-note item-end style="margin: 0 0 0 auto;">ギター</ion-note>
+                       </ion-item>
+                       <ion-item color="dark" item-start >
+                           <ion-avatar item-start>
+                                   <img src="../../assets/icon/favicon.png">
+                           </ion-avatar>
+                           <div>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">Band Name</p>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">@band_id</p>  
+                           </div>
+                           
+                           <ion-note item-end style="margin: 0 0 0 auto;">ベース</ion-note>
+                       </ion-item>
+                       <ion-item color="dark" item-start >
+                           <ion-avatar item-start>
+                                   <img src="../../assets/icon/favicon.png">
+                           </ion-avatar>
+                           <div>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">Account Name</p>
+                                   <p style="padding-left: 10px;     margin: 0 0 0 0;">@band_id</p>  
+                           </div>
+                           
+                           <ion-note item-end style="margin: 0 0 0 auto;">ドラム</ion-note>
+                       </ion-item>
+                   </ion-list>
+            </ion-slide>
+            <ion-slide >
+                    <calendar [eventSource]="eventSource"
+[calendarMode]="calendar.mode"
+[currentDate]="calendar.currentDate"
+(onEventSelected)="onEventSelected($event)"
+(onTitleChanged)="onViewTitleChanged($event)"
+(onTimeSelected)="onTimeSelected($event)"
+step="30"
+class="calendar" style="width:350px">
+</calendar>
+            </ion-slide>
+    </ion-slides>
     </ion-card>
-    
 </ion-content>

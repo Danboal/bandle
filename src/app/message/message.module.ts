@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { MessagePage } from './message.page';
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: MessagePage
   }
 ];

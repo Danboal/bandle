@@ -9,7 +9,7 @@ import { ConfigPage } from './config.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ConfigPage
   }
 ];

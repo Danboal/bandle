@@ -1,17 +1,19 @@
+<form>
 <ion-card color="dark" class="cardClass">
     <ion-img [src]="thumnailUrl" (click)="thumnail()" ></ion-img>
  <ion-item style="--border-color:#ffffff;">
     <ion-label position="floating">タイトル</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]='contribution_data.title'></ion-input>
   </ion-item>
   <ion-item style="--border-color:#ffffff;">
     <ion-label position="floating">ジャンル</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]='contribution_data.genre'></ion-input>
   </ion-item>
   <ion-item >
     <ion-label position="floating">動画の説明</ion-label>
-    <ion-textarea rows="6" cols="20"></ion-textarea>
+    <ion-textarea rows="6" cols="20" [(ngModel)]='contribution_data.contribute_explain'></ion-textarea>
   </ion-item>
 </ion-card>
 <ion-button expand="block" color="secondary" type="button" >動画を投稿する</ion-button>
+</form>
 

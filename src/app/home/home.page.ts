@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import {NavController, LoadingController, IonSlides, IonRefresher} from '@ionic/angular';
 import * as firebase from 'firebase';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ContributionComponent } from './contribution/contribution.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -15,23 +18,47 @@ export class HomePage implements OnInit {
   timelineSelectedClass: boolean = false;
   rankingSelectedClass: boolean = false;
   contributionSelectedClass: boolean = false;
+  @ViewChild(ToolbarComponent) toolbarComponent: ToolbarComponent;
   @ViewChild(TimelineComponent) timelineComponent: TimelineComponent;
   @ViewChild(RankingComponent) rankingComponent: RankingComponent;
   @ViewChild(ContributionComponent) contributionComponent: ContributionComponent;
+  myUserId: string;
   constructor(
     public navCtrl: NavController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public router: ActivatedRoute
     
     ) {
       loadingCtrl.dismiss(); 
     }
-
+  ionViewDidEnter(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        
+        this.timelineSelectedClass = true;
+        this.rankingSelectedClass = false;
+        this.contributionSelectedClass = false;
+        document.getElementById("ion-footer").style.display = 'contents';
+        this.myUserId = this.router.snapshot.paramMap.get('id') as string;
+        this.toolbarComponent.ngOnInit();
+        this.toolbarComponent.setUserId(this.myUserId);
+        this.timelineComponent.ngOnInit();
+      } else {
+        this.navCtrl.navigateRoot('signin');
+        
+      }
+    });
+  }
   ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.timelineSelectedClass = true;
         this.rankingSelectedClass = false;
         this.contributionSelectedClass = false;
+        document.getElementById("ion-footer").style.display = 'contents';
+        this.myUserId = this.router.snapshot.paramMap.get('id') as string;
+        this.toolbarComponent.ngOnInit();
+        this.toolbarComponent.setUserId(this.myUserId);
         this.timelineComponent.ngOnInit();
       } else {
         this.navCtrl.navigateRoot('signin');

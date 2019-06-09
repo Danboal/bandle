@@ -10,7 +10,7 @@ import { NgCalendarModule  } from 'ionic2-calendar'
 import { EventModule } from './event/event.module';
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: SchedulePage
   }
 ];

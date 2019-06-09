@@ -13,6 +13,7 @@ export class EventComponent implements OnInit{
   //selectedDay = new Date();
 
   ngOnInit() {
+    document.getElementById("ion-footer").style.display = 'contents';
   }
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtr: ModalController) {
     let preselectedDate = this.navParams.data.selectedDay;

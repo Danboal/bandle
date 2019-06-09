@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { NgCalendarModule  } from 'ionic2-calendar'
 import { InquirySoloAccountPage } from './inquiry-solo-account.page';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    NgCalendarModule,
     RouterModule.forChild(routes)
   ],
   declarations: [InquirySoloAccountPage]

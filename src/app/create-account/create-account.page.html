@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header color="dark">
+  <ion-toolbar color="dark">
       <ion-back-button></ion-back-button>
     <ion-title>アカウント作成</ion-title>
   </ion-toolbar>
@@ -9,6 +9,10 @@
     <form>
         <ion-list>
           <ion-item>
+              <ion-label position="floating">アカウントID</ion-label>
+              <ion-input type="text" [(ngModel)]="solo_account_id" name="solo_account_id" (ionChange)="checkExistUserId()"></ion-input>
+            </ion-item>
+          <ion-item>
             <ion-label position="floating">メールアドレス</ion-label>
             <ion-input type="text" [(ngModel)]="authdata.email" name="email" required></ion-input>
           </ion-item>
@@ -17,37 +21,25 @@
             <ion-input type="password" [(ngModel)]="authdata.password" name="password" required></ion-input>
           </ion-item>
           <ion-item>
-              <ion-label position="floating">アカウント名</ion-label>
+              <ion-label position="floating">パスワード再入力</ion-label>
+              <ion-input type="text" required></ion-input>
+         </ion-item>
+          <ion-item>
+              <ion-label position="floating">ユーザー名</ion-label>
               <ion-input type="text" [(ngModel)]="solo_account_data.user_name" name="user_name" required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">アカウントID</ion-label>
-                <ion-input type="text" [(ngModel)]="solo_account_id" name="solo_account_id" (ionChange)="checkExistUserId()"></ion-input>
-              </ion-item>
-            <ion-item>
-                <ion-label position="floating">年齢</ion-label>
+                <ion-label position="floating">生年月日</ion-label>
                 <ion-input type="text" [(ngModel)]="solo_account_data.age" name="age" required></ion-input>
               </ion-item>
-              <ion-item>
-                  <ion-label position="floating">活動場所</ion-label>
-                  <ion-input type="text" [(ngModel)]="solo_account_data.area" name="area" required></ion-input>
-                </ion-item>
                <ion-item>
                     <ion-label position="floating">性別</ion-label>
                     <ion-input type="text" [(ngModel)]="solo_account_data.sex" name="sex" required></ion-input>
                </ion-item>
                <ion-item>
-                  <ion-label position="floating">プロフィール</ion-label>
-                  <ion-input type="text" [(ngModel)]="solo_account_data.profile" name="profile" required></ion-input>
+                  <ion-label position="floating">電話番号</ion-label>
+                  <ion-input type="text" required></ion-input>
              </ion-item>
-             <ion-item>
-                <ion-label position="floating">担当パート</ion-label>
-                <ion-input type="text" [(ngModel)]="solo_account_data.part[0]" name="part" required></ion-input>
-           </ion-item>
-           <ion-item>
-              <ion-label position="floating">好きなジャンル</ion-label>
-              <ion-input type="text" [(ngModel)]="solo_account_data.favorit_genre[0]" name="favorit_genre" required></ion-input>
-         </ion-item>
         </ion-list>
         <p>
           <ion-button expand="block" color="primary" color="secondary" type="button" (click)="signUp()">登録</ion-button>

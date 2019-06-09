@@ -20,6 +20,7 @@ export class SchedulePage implements OnInit {
   constructor(public navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
   ngOnInit() {
     moment().locale("ja");
+    document.getElementById("ion-footer").style.display = 'contents';
   }
   async addEvent() {
     let date = this.selectedDay.toISOString();

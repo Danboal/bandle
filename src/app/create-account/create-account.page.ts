@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController , LoadingController} from '@ionic/angular';
+import { NavController, AlertController , LoadingController, NavParams} from '@ionic/angular';
+import { PreloadAllModules, RouterModule, Router } from '@angular/router';
 import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.page.html',
   styleUrls: ['./create-account.page.scss'],
 })
 export class CreateAccountPage implements OnInit {
-  authdata: { email: string, password: string } = { email: '', password: '' };
+  logindata: { email: string, password: string } = { email: '', password: '' };
+  authdata:{id:string};
   solo_account_data: { 
     age: number,
     area: string,
@@ -34,16 +37,27 @@ export class CreateAccountPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public alertController: AlertController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public router: Router
     ) { }
     async signUp() {
+      //nullチェック
+      if(this.logindata.email == '' || this.logindata.password == ''){
+        const alert = await this.alertController.create({
+          header: '警告',
+          message: 'メールアドレスとパスワードを入力してください',
+          buttons: ['OK']
+        });
+        alert.present();
+        return;
+      }
       try {
         this.presentLoading();
-        this.solo_account_data.email = this.authdata.email;
+        this.solo_account_data.email = this.logindata.email;
         await firebase.firestore().doc('solo_account/'+this.solo_account_id).set(this.solo_account_data);
-        await firebase.auth().createUserWithEmailAndPassword(this.authdata.email, this.authdata.password);
-        this.navCtrl.navigateRoot('home');
-  
+        await firebase.firestore().doc('auth/'+this.logindata.email).set(this.authdata);
+        await firebase.auth().createUserWithEmailAndPassword(this.logindata.email, this.logindata.password);
+        this.navCtrl.navigateForward('home/${'+this.solo_account_id+'}');
       } catch (error) {
         let db = await firebase.firestore().doc('solo_account/'+this.solo_account_id);
         if(db !=null){
@@ -58,7 +72,7 @@ export class CreateAccountPage implements OnInit {
         alert.present();
       }
     }
-
+    
     async presentLoading() {
       this.loader = await this.loadingCtrl.create({
         spinner: 'bubbles',
@@ -68,6 +82,7 @@ export class CreateAccountPage implements OnInit {
       this.loader.present();
     }
   ngOnInit() {
+    document.getElementById("ion-footer").style.display = 'none';
   }
   checkExistUserId(){
 

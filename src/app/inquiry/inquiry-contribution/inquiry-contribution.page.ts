@@ -10,6 +10,7 @@ export class InquiryContributionPage implements OnInit {
   constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
+    document.getElementById("ion-footer").style.display = 'contents';
   }
   inquiry(){
     this.navCtrl.navigateForward('inquiry-band-account');

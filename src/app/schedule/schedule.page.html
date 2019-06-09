@@ -7,7 +7,7 @@
     
 </ion-header>
 <ion-content main padding>
-    <ion-button expand="block" color="secondary" type="button" (click)="addEvent()">予定を追加</ion-button>
+    <ion-button expand="block" color="secondary" strong="true" type="button" (click)="addEvent()">予定を追加</ion-button>
     <calendar [eventSource]="eventSource"
     [calendarMode]="calendar.mode"
     [currentDate]="calendar.currentDate"

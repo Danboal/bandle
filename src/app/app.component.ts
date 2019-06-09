@@ -24,6 +24,12 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    
     firebase.initializeApp(environment.config);
   }
+
+  ionViewWillEnter(){
+    console.log("ionViewWillEnter,URL: "+document.URL.split('/')[3]);
+  }
+
 }

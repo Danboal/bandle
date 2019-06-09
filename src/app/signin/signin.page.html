@@ -1,29 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title></ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-  <div style="text-align:center;">
-      <img src="../../assets/icon/Bandle_title_black.png" width="187px">
+  
+  <div style="margin-top: calc((100vh)/2 - 262px);">
+    <div style="text-align:center;">
+        <img src="../../assets/icon/Bandle_title_black.png" width="187px">
+    </div>
+      <form style="padding-top: 30px;">
+              <ion-input type="text" placeholder="メールアドレス" [(ngModel)]="data.email" name="email" class="emailClass" required></ion-input>
+            
+              <ion-input type="password" placeholder="パスワード" [(ngModel)]="data.password" name="password" class="emailClass" required></ion-input>
+            
+          <p>
+            <ion-button expand="block" color="secondary" type="button" (click)="signIn()">サインイン</ion-button>
+          </p>
+          <p>
+            <ion-button expand="block"  fill="outline" color="primary" type="button" (click)="signUp()">アカウント作成</ion-button>
+          </p>
+          <p>
+            <ion-button expand="block" fill="clear" color="primary" type="button" style="font-size: 11px;margin-top: -10px;" (click)="resetPassword()">パスワードを忘れた場合</ion-button>
+          </p>
+        </form>
   </div>
-  <form>
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">メールアドレス</ion-label>
-        <ion-input type="text" [(ngModel)]="data.email" name="email" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">パスワード</ion-label>
-        <ion-input type="password" [(ngModel)]="data.password" name="password" required></ion-input>
-      </ion-item>
-    </ion-list>
-    <p>
-      <ion-button expand="block" color="secondary" type="button" (click)="signIn()">サインイン</ion-button>
-    </p>
-    <p>
-      <ion-button expand="block" fill="clear" color="light" type="button" (click)="signUp()">アカウントを<span style="color:#FF4E00;">作成</span>する</ion-button>
-    </p>
-  </form>
+  
 </ion-content>

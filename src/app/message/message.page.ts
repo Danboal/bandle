@@ -13,6 +13,7 @@ export class MessagePage implements OnInit {
   ngOnInit() {
     this.bandTabSelectedClass = true;
     this.soloTabSelectedClass = false;
+    document.getElementById("ion-footer").style.display = 'contents';
   }
   bandTab(){
     this.bandTabSelectedClass = true;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController , LoadingController, NavParams} from '@ionic/angular';
 import { PreloadAllModules, RouterModule, Router } from '@angular/router';
 import * as firebase from 'firebase';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-create-account',
@@ -10,23 +11,29 @@ import * as firebase from 'firebase';
 })
 export class CreateAccountPage implements OnInit {
   logindata: { email: string, password: string } = { email: '', password: '' };
-  authdata:{id:string};
+  authdata: {
+    id:string
+  } = {
+    id: ''
+  };
   solo_account_data: { 
-    age: number,
+    age: string,
     area: string,
     avator_url: string,
     email: string,
     favorit_genre: any,
+    contribution: any,
     part: any,
     profile: string,
     sex: string,
     user_name: string
   } = { 
-    age: 0,
+    age: '',
     area: '',
     avator_url: '',
     email: '',
     favorit_genre: [],
+    contribution: [],
     part: [],
     profile: '',
     sex: '',
@@ -38,7 +45,8 @@ export class CreateAccountPage implements OnInit {
     public navCtrl: NavController,
     public alertController: AlertController,
     public loadingCtrl: LoadingController,
-    public router: Router
+    public router: Router,
+    public app: AppComponent
     ) { }
     async signUp() {
       //nullチェック
@@ -54,10 +62,13 @@ export class CreateAccountPage implements OnInit {
       try {
         this.presentLoading();
         this.solo_account_data.email = this.logindata.email;
-        await firebase.firestore().doc('solo_account/'+this.solo_account_id).set(this.solo_account_data);
-        await firebase.firestore().doc('auth/'+this.logindata.email).set(this.authdata);
+        let solo_account_collection = this.app.firestore.collection("solo_account");
+        let auth_collection = this.app.firestore.collection("auth");
+        this.authdata.id = this.solo_account_id;
+        solo_account_collection.doc(this.solo_account_id).set(this.solo_account_data);
+        auth_collection.doc(this.logindata.email).set(this.authdata);
         await firebase.auth().createUserWithEmailAndPassword(this.logindata.email, this.logindata.password);
-        this.navCtrl.navigateForward('home/${'+this.solo_account_id+'}');
+        this.navCtrl.navigateForward('home/'+this.solo_account_id);
       } catch (error) {
         let db = await firebase.firestore().doc('solo_account/'+this.solo_account_id);
         if(db !=null){

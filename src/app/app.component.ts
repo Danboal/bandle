@@ -11,6 +11,8 @@ import { environment } from '../environments/environment';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  firestore;
+  rdb;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -25,9 +27,10 @@ export class AppComponent {
       this.splashScreen.hide();
     });
     
-    firebase.initializeApp(environment.config);
+    let app = firebase.initializeApp(environment.config);
+    this.firestore = firebase.firestore(app);
+    this.rdb = firebase.database(app);
   }
-
   ionViewWillEnter(){
     console.log("ionViewWillEnter,URL: "+document.URL.split('/')[3]);
   }

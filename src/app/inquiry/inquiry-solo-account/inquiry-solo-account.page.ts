@@ -22,6 +22,10 @@ export class InquirySoloAccountPage implements OnInit {
   };
   constructor() { }
 
+  edit() {
+    
+  }
+
   ngOnInit() {
     document.getElementById("ion-footer").style.display = 'contents';
   }

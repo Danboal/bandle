@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
     <ion-card>
         <ion-item item-start >
             <ion-grid>
@@ -57,7 +57,7 @@
         </ion-tab-bar>
         <ion-slides (ionSlideWillChange)="onSlideChangeStart()" #Slids>
             <ion-slide >
-                    <ion-item>
+                    <ion-item lines="none" >
                             プロフィール
                     </ion-item>
             </ion-slide>
@@ -157,4 +157,5 @@ class="calendar" style="width:350px">
             </ion-slide>
     </ion-slides>
     </ion-card>
+    <ion-button expand="block" color="primary" color="secondary" type="button" (click)="edit()">アカウント情報修正</ion-button>
 </ion-content>

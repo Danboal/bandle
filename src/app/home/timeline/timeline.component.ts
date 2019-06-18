@@ -6,6 +6,7 @@ import { NavController} from '@ionic/angular';
   styleUrls: ['./timeline.component.scss'],
 })
 export class TimelineComponent implements OnInit {
+  myUserId: string = '';
   constructor(public navCtrl: NavController) { }
 
   ngOnInit() {}
@@ -16,5 +17,8 @@ export class TimelineComponent implements OnInit {
   inquiry(){
 
     this.navCtrl.navigateForward('inquiry-contribution');
+  }
+  public setUserId(id){
+    this.myUserId = id;
   }
 }

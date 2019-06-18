@@ -26,7 +26,13 @@ export class ToolbarComponent implements OnInit {
       this.scheduleSelectedClass = false;
       this.configSelectedClass = false;
     }
-
+    initialise(){
+      this.homeSelectedClass = true;
+    this.searchSelectedClass = false;
+    this.messageSelectedClass = false;
+    this.scheduleSelectedClass = false;
+    this.configSelectedClass = false;
+    }
   ngOnInit() {
     this.homeSelectedClass = true;
     this.searchSelectedClass = false;
@@ -34,7 +40,7 @@ export class ToolbarComponent implements OnInit {
     this.scheduleSelectedClass = false;
     this.configSelectedClass = false;
   }
-  setUserId(id){
+  public setUserId(id){
     this.myUserId = id;
   }
   async timeline() {
